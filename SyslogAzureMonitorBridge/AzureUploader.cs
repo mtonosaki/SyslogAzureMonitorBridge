@@ -60,7 +60,7 @@ namespace SyslogAzureMonitorBridge
                     rec.EventTime = ev.EventUtcTime;
                     rec.HostIP = ev.Remote.Address.ToString();
                     rec.HostName = /* Dns.GetHostEntry(ev.Remote.Address)?.HostName ?? */ ev.Remote.Address.ToString(); // Do not use Dns.GetHostEntry because of block 5 seconds each for local IPs.
-                    rec.Computer = rec.HostName;
+                    rec.Computer = Environment.MachineName;
                     rec.SyslogMessage = StrUtil.MidSkip(ev.Message, "^<[0-9]+>").TrimStart(' ', '\t', '\r', '\n', '\b');
                     recs.Add(rec);
                 }
