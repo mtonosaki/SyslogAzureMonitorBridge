@@ -93,18 +93,17 @@ namespace SyslogAzureMonitorBridge
             try
             {
                 var url = "https://" + WorkspaceID + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
-
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("Log-Type", LogName);
-                client.DefaultRequestHeaders.Add("Authorization", signature);
-                client.DefaultRequestHeaders.Add("x-ms-date", date);
-                client.DefaultRequestHeaders.Add("time-generated-field", "");
-
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Headers.Add("Accept", "application/json");
+                request.Headers.Add("Log-Type", LogName);
+                request.Headers.Add("Authorization", signature);
+                request.Headers.Add("x-ms-date", date);
+                request.Headers.Add("time-generated-field", "");
                 var httpContent = new StringContent(json, Encoding.UTF8);
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var response = client.PostAsync(new Uri(url), httpContent);
-
-                var responseContent = response.Result.Content;
+                request.Content = httpContent;
+                var response = client.SendAsync(request);
+                var responseContent = response.Result.Content;  // wait the responce of request
                 string result = responseContent.ReadAsStringAsync().Result;
             }
             catch (Exception excep)
