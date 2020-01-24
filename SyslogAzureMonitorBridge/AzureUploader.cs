@@ -60,7 +60,7 @@ namespace SyslogAzureMonitorBridge
                     rec.EventTime = ev.EventUtcTime;
                     rec.HostIP = ev.Remote.Address.ToString();
                     rec.HostName = /* Dns.GetHostEntry(ev.Remote.Address)?.HostName ?? */ ev.Remote.Address.ToString(); // Do not use Dns.GetHostEntry because of block 5 seconds each for local IPs.
-                    rec.Computer = rec.HostName;
+                    rec.Computer = Environment.MachineName;
                     rec.SyslogMessage = StrUtil.MidSkip(ev.Message, "^<[0-9]+>").TrimStart(' ', '\t', '\r', '\n', '\b');
                     recs.Add(rec);
                 }
@@ -86,24 +86,24 @@ namespace SyslogAzureMonitorBridge
             }
         }
 
+        private static HttpClient client = new HttpClient();
+
         public void PostData(string signature, string date, string json)
         {
             try
             {
                 var url = "https://" + WorkspaceID + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
-
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("Log-Type", LogName);
-                client.DefaultRequestHeaders.Add("Authorization", signature);
-                client.DefaultRequestHeaders.Add("x-ms-date", date);
-                client.DefaultRequestHeaders.Add("time-generated-field", "");
-
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Headers.Add("Accept", "application/json");
+                request.Headers.Add("Log-Type", LogName);
+                request.Headers.Add("Authorization", signature);
+                request.Headers.Add("x-ms-date", date);
+                request.Headers.Add("time-generated-field", "");
                 var httpContent = new StringContent(json, Encoding.UTF8);
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var response = client.PostAsync(new Uri(url), httpContent);
-
-                var responseContent = response.Result.Content;
+                request.Content = httpContent;
+                var response = client.SendAsync(request);
+                var responseContent = response.Result.Content;  // wait the responce of request
                 string result = responseContent.ReadAsStringAsync().Result;
             }
             catch (Exception excep)
