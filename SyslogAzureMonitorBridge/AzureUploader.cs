@@ -86,13 +86,14 @@ namespace SyslogAzureMonitorBridge
             }
         }
 
+        private static HttpClient client = new HttpClient();
+
         public void PostData(string signature, string date, string json)
         {
             try
             {
                 var url = "https://" + WorkspaceID + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
 
-                var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
                 client.DefaultRequestHeaders.Add("Log-Type", LogName);
                 client.DefaultRequestHeaders.Add("Authorization", signature);
