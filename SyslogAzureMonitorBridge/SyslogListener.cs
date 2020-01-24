@@ -1,4 +1,7 @@
-﻿using System;
+﻿// (c) 2020 Manabu Tonosaki
+// Licensed under the MIT license.
+
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -58,7 +61,7 @@ namespace SyslogAzureMonitorBridge
                             Exception = ex,
                         });
                     }
-                    Task.Delay(333 * 2 ^ retry);
+                    Task.Delay(333 * 2 ^ retry, cancellationToken);
                 }
             });
         }

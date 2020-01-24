@@ -1,4 +1,7 @@
-﻿using System;
+﻿// (c) 2020 Manabu Tonosaki
+// Licensed under the MIT license.
+
+using System;
 using System.Configuration.Install;
 using System.Linq;
 using System.Reflection;

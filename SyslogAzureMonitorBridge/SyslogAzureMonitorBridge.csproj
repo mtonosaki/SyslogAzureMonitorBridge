@@ -57,9 +57,6 @@
     <ApplicationIcon>SyslogAzureMonitorBridge.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -70,9 +67,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tono, Version=1.0.10.0, Culture=neutral, PublicKeyToken=f46eef5f74a136f9, processorArchitecture=MSIL">
-      <HintPath>packages\Tono.Core.1.0.10\lib\netstandard2.0\Tono.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureUploader.cs" />
@@ -94,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <None Include="SyslogAzureMonitorBridge.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -107,7 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SyslogAzureMonitorBridge.ico" />
-    <Content Include="TonoCoreIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -120,6 +112,14 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Tono.Core">
+      <Version>1.0.10</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
