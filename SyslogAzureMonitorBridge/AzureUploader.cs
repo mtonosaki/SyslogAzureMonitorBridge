@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿// (c) 2020 Manabu Tonosaki
+// Licensed under the MIT license.
+
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -26,7 +29,7 @@ namespace SyslogAzureMonitorBridge
         {
             while (cancellationToken.IsCancellationRequested == false)
             {
-                await Task.Delay(5000, cancellationToken);
+                await Task.Delay(10000, cancellationToken); // upload 10s each to reduce request count to Azure.
 
                 var queue = Messages?.Invoke();
                 List<SyslogMessageEventArgs> chunk;
