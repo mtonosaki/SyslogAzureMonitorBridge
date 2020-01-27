@@ -26,7 +26,7 @@ Open windows registry editor (regedit.exe)  and find below folder
 Then add command parameter to the **ImagePath** setting.  
 
 |  Parameter  |  Description  |  Example |  Remarks |  
-| ---- | ---- |  
+| ---- | ---- | ---- | ---- |  
 | /n= | Table name | Syslog | Actual name in Azure Log Analytics will be  "**\<Table name\>_CL**"  |  
 | /p= | Port Number of syslog listener | 514 | It is necessary to open inbound UDP access with firewall |  
 | /w= | Workspace ID | | Copy it from Azure Log Analytics screen. See detail below. |  
