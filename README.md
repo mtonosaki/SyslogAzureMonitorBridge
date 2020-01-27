@@ -1,4 +1,4 @@
-# SyslogAzureMonitorBridge  
+# SyslogAzureMonitorBridge   
 Windows Service of Syslog listener to send the messages to Azure Monitor  
 
 ![](https://aqtono.com/tomarika/syslogazure/SyslogAzureMonitorBridgeIcon.png)   
