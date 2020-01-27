@@ -58,9 +58,12 @@ Paste then **[A] for /w=**,  **[B] for /k=**
 Exec below command with Windows command prompt administrator mode.  
 ```sc start SyslogAzureMonitorBridge```   
 
+<br>  
+
 ### 5.Query the syslog with Azure Monitor  
 
-_This sample is on below settings. **/n=Syslog**_ 
+_This sample is on below settings.  
+**/n=Syslog**_  
   
 Open Log Analytics workspace in Azure Portal (ARM) then click [Logs] command in left pane.  
   
