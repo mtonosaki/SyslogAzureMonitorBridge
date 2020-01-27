@@ -32,6 +32,8 @@ Then add command parameter to the **ImagePath** setting.
 | /w= | Workspace ID | | Copy it from Azure Log Analytics screen. See detail below. |  
 | /k= | Key | | Copy from the same screen of Workspace ID |  
 
+<br>  
+
 #### To know Azure Monitor ID/Key  
 Open Log Analytics in Azure Portal of ARM (Azure Resource Manager) then select **[1.Advanced Settings]** - **[2.Connected Sources]** - **[3.Windows Servers]**  
   
@@ -47,6 +49,7 @@ This is a sample setting to **ImagePath** setting in Registry editor.
 ```C:\MyApps\Release\SyslogAzureMonitorBridge.exe /n=Syslog /p=514 /w=12345678-1234-1234-1234-123456789012 /k=12345678901234567890123456789012345678901234567890123456789012345678901234567890123456==```
 
 <hr>  
+<br>  
 
 ### 4.Start the Service  
 Exec below command with Windows command prompt administrator mode.  
@@ -75,7 +78,7 @@ Syslog_CL
 | order by EventTime_t desc
 ```  
 
-Record Column  
+**Record Column**  
 
 |  Column  |  Description  |  
 | ---- | ---- |  
@@ -84,7 +87,7 @@ Record Column
 | Computer | IP address of SyslogAzureMonitorBridge service |  
 | Facility\_s | Syslog facility |  
 | SeverityLevel\_s | Syslog severity level |  
-| HostIP\_s | Same with Computer column |  
-| HostName\_s | Same with Computer column |  
+| HostIP\_s | Syslog owner |  
+| HostName\_s | Same with _HostIP\_s_ column |  
 | SyslogMessage\_s | Syslog message trimmed start "\<priority\>" part. |  
 
