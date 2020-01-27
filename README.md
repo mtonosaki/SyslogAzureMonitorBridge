@@ -27,9 +27,9 @@ Then add command parameter to the **ImagePath** setting.
 
 |  Parameter  |  Description  |  Example |  Remarks |  
 | ---- | ---- |  
-| /n= | Table name | Syslog | Actual name in Azure Log Analytics will be  "**\<Table name\>_CL**"  |
-| /p= | Port Number of syslog listener | 514 | It is necessary to open inbound UDP access with firewall |
-| /w= | Workspace ID | | Copy it from Azure Log Analytics screen. See detail below. |
+| /n= | Table name | Syslog | Actual name in Azure Log Analytics will be  "**\<Table name\>_CL**"  |  
+| /p= | Port Number of syslog listener | 514 | It is necessary to open inbound UDP access with firewall |  
+| /w= | Workspace ID | | Copy it from Azure Log Analytics screen. See detail below. |  
 | /k= | Key | | Copy from the same screen of Workspace ID |  
 
 #### To know Azure Monitor ID/Key  
@@ -80,11 +80,11 @@ Record Column
 |  Column  |  Description  |  
 | ---- | ---- |  
 | TimeGenerated | Generated time at uploaded to Azure Monitor |  
-| EventTime_t | Syslog received time in SyslogAzureMonitorBridge service |
-| Computer | IP address of SyslogAzureMonitorBridge service |
-| Facility\_s | Syslog facility |
-| SeverityLevel\_s | Syslog severity level |
-| HostIP\_s | Same with Computer column |
-| HostName\_s | Same with Computer column |
+| EventTime_t | Syslog received time in SyslogAzureMonitorBridge service |  
+| Computer | IP address of SyslogAzureMonitorBridge service |  
+| Facility\_s | Syslog facility |  
+| SeverityLevel\_s | Syslog severity level |  
+| HostIP\_s | Same with Computer column |  
+| HostName\_s | Same with Computer column |  
 | SyslogMessage\_s | Syslog message trimmed start "\<priority\>" part. |  
 
