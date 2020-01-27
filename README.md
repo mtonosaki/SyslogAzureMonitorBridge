@@ -32,6 +32,12 @@ Then add command parameter to the **ImagePath** setting.
 | /w= | Workspace ID | | Copy it from Azure Log Analytics screen. See detail below. |  
 | /k= | Key | | Copy from the same screen of Workspace ID |  
 
+
+<br>  
+
+This is a sample setting of **ImagePath** setting in Registry editor.  
+```C:\MyApps\Release\SyslogAzureMonitorBridge.exe /n=Syslog /p=514 /w=12345678-1234-1234-1234-123456789012 /k=12345678901234567890123456789012345678901234567890123456789012345678901234567890123456==```
+
 <br>  
 
 #### To know Azure Monitor ID/Key  
@@ -44,9 +50,6 @@ Then, copy Workspace ID - [A], Primary Key - [B]
 Paste then **[A] for /w=**,  **[B] for /k=**  
   
 ![](https://aqtono.com/tomarika/syslogazure/arm002.png)   
-
-This is a sample setting to **ImagePath** setting in Registry editor.  
-```C:\MyApps\Release\SyslogAzureMonitorBridge.exe /n=Syslog /p=514 /w=12345678-1234-1234-1234-123456789012 /k=12345678901234567890123456789012345678901234567890123456789012345678901234567890123456==```
 
 <hr>  
 <br>  
