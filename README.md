@@ -71,7 +71,8 @@ Open Log Analytics workspace in Azure Portal (ARM) then click [Logs] command in 
   
 Find your Syslog table like below KQL  
 ```KQL
-search * | distinct $table```  
+search * | distinct $table
+```  
 
 You will see **Syslog\_CL** in the KQL result if the syslog data have uploaded successfully.  
 
