@@ -79,7 +79,7 @@ You will see **Syslog\_CL** in the KQL result if the syslog data have uploaded s
 <hr>  
 
 Try to see a **Syslog\_CL** data  
-```
+```KQL
 Syslog_CL
 | where EventTime_t > ago(24h)
 | limit 20
