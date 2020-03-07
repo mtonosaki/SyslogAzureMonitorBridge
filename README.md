@@ -26,11 +26,18 @@ Open windows registry editor (regedit.exe)  and find below folder
 Then add command parameter to the **ImagePath** setting.  
 
 |  Parameter  |  Description  |  Example |  Remarks |  
-| ---- | ---- |  
+| ---- | ---- | ---- | ---- |  
 | /n= | Table name | Syslog | Actual name in Azure Log Analytics will be  "**\<Table name\>_CL**"  |  
 | /p= | Port Number of syslog listener | 514 | It is necessary to open inbound UDP access with firewall |  
 | /w= | Workspace ID | | Copy it from Azure Log Analytics screen. See detail below. |  
 | /k= | Key | | Copy from the same screen of Workspace ID |  
+
+
+<br>  
+
+A sample setting of **ImagePath** in Windows Registry.  
+
+```C:\MyApps\Release\SyslogAzureMonitorBridge.exe /n=Syslog /p=514 /w=12345678-1234-1234-1234-123456789012 /k=12345678901234567890123456789012345678901234567890123456789012345678901234567890123456==```
 
 <br>  
 
@@ -45,33 +52,34 @@ Paste then **[A] for /w=**,  **[B] for /k=**
   
 ![](https://aqtono.com/tomarika/syslogazure/arm002.png)   
 
-This is a sample setting to **ImagePath** setting in Registry editor.  
-```C:\MyApps\Release\SyslogAzureMonitorBridge.exe /n=Syslog /p=514 /w=12345678-1234-1234-1234-123456789012 /k=12345678901234567890123456789012345678901234567890123456789012345678901234567890123456==```
-
-<hr>  
 <br>  
 
 ### 4.Start the Service  
 Exec below command with Windows command prompt administrator mode.  
 ```sc start SyslogAzureMonitorBridge```   
 
+<br>  
+
 ### 5.Query the syslog with Azure Monitor  
 
-_This sample is on below settings. **/n=Syslog**_ 
+_This sample is on below settings.  
+**/n=Syslog**_  
   
 Open Log Analytics workspace in Azure Portal (ARM) then click [Logs] command in left pane.  
   
 <hr>  
   
 Find your Syslog table like below KQL  
-```search * | distinct $table```  
+```KQL
+search * | distinct $table
+```  
 
 You will see **Syslog\_CL** in the KQL result if the syslog data have uploaded successfully.  
 
 <hr>  
 
 Try to see a **Syslog\_CL** data  
-```
+```KQL
 Syslog_CL
 | where EventTime_t > ago(24h)
 | limit 20
