@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿// (c) 2020 Manabu Tonosaki
+// Licensed under the MIT license.
+
+using System.ComponentModel;
 
 namespace SyslogAzureMonitorBridge
 {

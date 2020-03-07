@@ -86,7 +86,7 @@ namespace SyslogAzureMonitorBridge
             }
         }
 
-        private static HttpClient client = new HttpClient();
+        private static readonly HttpClient client = new HttpClient();
 
         public void PostData(string signature, string date, string json)
         {
