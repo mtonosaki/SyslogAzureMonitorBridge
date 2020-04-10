@@ -39,6 +39,8 @@ A sample setting of **ImagePath** in Windows Registry.
 
 ```C:\MyApps\Release\SyslogAzureMonitorBridge.exe /n=Syslog /p=514 /w=12345678-1234-1234-1234-123456789012 /k=12345678901234567890123456789012345678901234567890123456789012345678901234567890123456==```
 
+<span style="color: red; ">**NOTE :** ImagePath that conatin keys will show on [Task Manager]</span>
+
 <br>  
 
 #### To know Azure Monitor ID/Key  
